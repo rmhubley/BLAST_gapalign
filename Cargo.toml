@@ -2,5 +2,11 @@
 name = "blast_gapalign"
 version = "0.1.0"
 edition = "2021"
+description = "A Rust port of the NCBI BLAST+ gapped alignment algorithm"
+repository = "https://github.com/rmhubley/BLAST_gapalign"
+authors = [
+    "NCBI BLAST+ team (original algorithm)",
+    "Robert Hubley <rhubley@systemsbiology.org>",
+]
 
 [dependencies]

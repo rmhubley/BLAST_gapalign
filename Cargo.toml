@@ -9,4 +9,8 @@ authors = [
     "Robert Hubley <rhubley@systemsbiology.org>",
 ]
 
+[lib]
+name = "blast_gapalign"
+path = "src/lib.rs"
+
 [dependencies]

@@ -35,7 +35,7 @@ use std::cmp::{max, min};
 use std::i32::MIN;
 
 /// Converts a DNA character to contigous numeric encoding.
-fn dna_base_to_index(base: u8) -> usize {
+pub fn dna_base_to_index(base: u8) -> usize {
     match base {
         b'A' => 0,
         b'C' => 1,
@@ -57,7 +57,7 @@ pub const OP_EXTEND_GAP_B:u8  = 0x40;
 /// - A slightly modified version of the original NCBI BLAST scoring parameters
 ///   structure. For this simple API it makes more sense to combine the scoring
 ///   matrix, gap penalties, and x-drop threshold into a single structure.
-struct BlastScoringParameters {
+pub struct BlastScoringParameters {
     scoring_matrix: Vec<Vec<i32>>,       // Standard scoring matrix
     gap_open: i32,
     gap_extend: i32,
@@ -66,13 +66,13 @@ struct BlastScoringParameters {
 
 // Individual cell of the dynamic programming matrix
 #[derive(Clone)]
-struct BlastGapDP {
+pub struct BlastGapDP {
     best: i32,        // Best score for the cell
     best_gap: i32,    // Best score for a gap (insertion/deletion)
 }
 
 // Dynamic programming matrix for gapped alignment
-struct BlastGapAlignStruct {
+pub struct BlastGapAlignStruct {
     dp_mem: Vec<BlastGapDP>, // Holds a vector of BlastGapDP cells
     dp_mem_alloc: usize,     // Size of the allocated memory for dp_mem
 }
@@ -121,7 +121,7 @@ fn print_scores_range(scores: &Vec<BlastGapDP>, start: usize, end: usize) {
 //       |
 //     B |
 //       
-fn align_ex(
+pub fn align_ex(
     a: &[u8],                                // Sequence A
     b: &[u8],                                // Sequence B
     m: i32,                                  // Length of sequence A 
@@ -531,7 +531,7 @@ fn reconstruct_alignment(
 
 
 #[allow(dead_code)]
-fn align_sequences_with_seed(
+pub fn align_sequences_with_seed(
     sequence_a: &[u8],
     sequence_b: &[u8],
     seed_a_offset: usize,
@@ -625,7 +625,7 @@ fn align_sequences_with_seed(
 
 
 
-fn main() {
+pub fn run_alignex_example() {
     // --- Step 1: Define sequences ---
     // One change seqA: G to seqB: A
     // rmblast says: 175 comparison matrix (symmetric)
